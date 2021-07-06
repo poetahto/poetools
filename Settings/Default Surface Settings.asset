@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb73fbc668c8a145969ccbd6216d622, type: 3}
+  m_Name: Default Surface Settings
+  m_EditorClassIdentifier: 
+  friction: 4.5
+  stepSound: {fileID: 8300000, guid: e344f21cb17c79244ba31264d12d3211, type: 3}
+  jumpSound: {fileID: 8300000, guid: bf3d2611d47634b4aa890c12568c0fd6, type: 3}
+  landSound: {fileID: 8300000, guid: 1e8d0e6568ddbc74aa6ff8a7f9102ce4, type: 3}

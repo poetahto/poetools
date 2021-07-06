@@ -1,0 +1,17 @@
+{
+    "name": "poetools editor",
+    "references": [
+        "GUID:918d5fb3ff790314a99a7ece0e2ba0bc"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

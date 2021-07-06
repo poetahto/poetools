@@ -1,0 +1,10 @@
+{
+  "name": "com.poetools",
+  "version": "0.0.1",
+  "displayName": "poetools",
+  "description": "Unity Package that provides some common tools for creating games.",
+  "author": {
+    "name": "poetahto",
+    "email": "epic.potat@gmail.com"
+  }
+}
