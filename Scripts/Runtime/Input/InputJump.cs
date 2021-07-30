@@ -14,7 +14,7 @@ namespace Input
         [Tooltip("Passes current speed and remaining air jumps.")]
         public UnityEvent<float, int> onAirJump = new UnityEvent<float, int>();
     }
-    
+
     public class InputJump : MonoBehaviour
     {
         [Header("Dependencies")]
@@ -47,7 +47,7 @@ namespace Input
             groundedCheck.CollisionEvents.onEnterCollision.AddListener(OnLand);
         }
 
-        private void Update()
+        private void LateUpdate()
         {
 #if ENABLE_LEGACY_INPUT_MANAGER && !ENABLE_INPUT_SYSTEM
             ProvideJumpInputLegacy();

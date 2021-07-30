@@ -34,10 +34,14 @@ namespace Listeners
         [SerializeField] 
         private SurfaceCollisionEvents collisionEvents = new SurfaceCollisionEvents();
 
+        [SerializeField]
+        private bool showDebug;
+
         public bool IsGrounded { get; private set; }
         public bool IsGroundedIgnoreSlope { get; private set; }
         public Collider ConnectedCollider { get; private set; }
         public Vector3 ContactNormal { get; private set; }
+        public int FramesSpentOnGround { get; private set; }
         public SurfaceCollisionEvents CollisionEvents => collisionEvents;
         
         private RaycastHit _currentHitInfo;
@@ -46,13 +50,21 @@ namespace Listeners
         private void Update()
         {
             _wasGroundedLastFrame = IsGrounded;
-            IsGrounded = CheckGrounded();
-            
+
+            UpdateIsGrounded();
+
+            CheckForGroundedFrames();
             CheckForCollisionEnter();
             CheckForCollisionExit();
         }
 
-        private bool CheckGrounded()
+        private void CheckForGroundedFrames()
+        {
+            if (IsGrounded)
+                FramesSpentOnGround = JustEntered ? 0 : FramesSpentOnGround + 1;
+        }
+
+        private void UpdateIsGrounded()
         {
             Ray gravity = new Ray(transform.position, gravityDirection);
 
@@ -61,11 +73,12 @@ namespace Listeners
                 ContactNormal = _currentHitInfo.normal;
                 IsGroundedIgnoreSlope = true;
                 ConnectedCollider = _currentHitInfo.collider;
-                return Vector3.Angle(Vector3.up, _currentHitInfo.normal) <= slopeLimitDegrees;
+                IsGrounded = Vector3.Angle(Vector3.up, _currentHitInfo.normal) <= slopeLimitDegrees;
+                return;
             }
 
             IsGroundedIgnoreSlope = false;
-            return false;
+            IsGrounded = false;
         }
 
         private void CheckForCollisionEnter()
@@ -78,6 +91,19 @@ namespace Listeners
         {
             if (JustExited)
                 collisionEvents.onExitCollision.Invoke(ConnectedCollider);
+        }
+        
+        private void OnGUI()
+        {
+            if (showDebug)
+            {
+                string connectedCollider = ConnectedCollider ? ConnectedCollider.name : "None";
+                
+                GUILayout.Label($"IsGrounded: {IsGrounded} (Ignoring slope: {IsGroundedIgnoreSlope})");
+                GUILayout.Label($"Connected Collider: {connectedCollider}");
+                GUILayout.Label($"Contact Normal: {ContactNormal}");
+                GUILayout.Label($"Frames spent on ground: {FramesSpentOnGround}");
+            }
         }
         
         private bool JustEntered => IsGrounded && !_wasGroundedLastFrame;
