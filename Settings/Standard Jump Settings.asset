@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97a25b5599483544a8cb27f409518e8e, type: 3}
-  m_Name: HL2 Jump Settings
+  m_Name: Standard Jump Settings
   m_EditorClassIdentifier: 
-  jumpDistance: 3.5
-  jumpHeight: 0.75
+  jumpDistance: 4.5
+  jumpHeight: 1.1
   assumedInitialSpeed: 5
   standardSkew: 0.5
-  enableFastFall: 0
+  enableFastFall: 1
   minDistance: 2.5
   minHeight: 0.55
   fastFallSkew: 0.5
   airJumps: 0
   coyoteTime: 0.15
-  jumpBufferTime: 0
-  scrollToJump: 1
+  jumpBufferTime: 0.15
+  scrollToJump: 0

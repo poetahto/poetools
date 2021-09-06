@@ -6,7 +6,7 @@ public class MovementAudio : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private GroundedCollisionListener groundCheck;
+    [SerializeField] private Listeners.GroundedSphereCaster groundedSphereCaster;
         
     [Header("Settings")]
     [SerializeField] private float stepDistance = 2f;
@@ -23,7 +23,7 @@ public class MovementAudio : MonoBehaviour
 
     private void Update()
     {
-        if (groundCheck.IsGrounded)
+        if (groundedSphereCaster.IsGrounded)
             CheckForStep();
             
         _previousPosition = transform.position;
@@ -41,7 +41,7 @@ public class MovementAudio : MonoBehaviour
     {
         _displacement = 0;
             
-        audioSource.PlayOneShot(groundCheck.ConnectedCollider.TryGetComponent(out _surface)
+        audioSource.PlayOneShot(groundedSphereCaster.ConnectedCollider.TryGetComponent(out _surface)
             ? _surface.Settings.StepSound
             : defaultSurfaceSettings.StepSound);
     }
