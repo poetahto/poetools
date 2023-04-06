@@ -1,0 +1,22 @@
+{
+    "name": "poetools.integrations",
+    "rootNamespace": "",
+    "references": [
+        "GUID:48165e4932c2d0c4c9f9eba53d9f9863",
+        "GUID:597a04d9013981c4c91aa536c5ac4940",
+        "GUID:6d51d4e2032f9c74ab7fb114485faa01",
+        "GUID:3728a43a82d6d924bb61c9acf7e35c32",
+        "GUID:d4062ad1a282df547becd51c6686e640",
+        "GUID:3b8ed52f1b5c64994af4c4e0aa4b6c4b",
+        "GUID:1491147abca9d7d4bb7105af628b223e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
