@@ -1,7 +1,7 @@
 {
-  "name": "com.poetools.core",
+  "name": "com.poetools",
   "version": "0.0.1",
-  "displayName": "Poetools Core",
+  "displayName": "Poetools",
   "description": "Set of common tools for creating games in the Unity game engine.",
   "author": {
     "name": "poetahto",
