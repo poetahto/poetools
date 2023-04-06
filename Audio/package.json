@@ -1,0 +1,10 @@
+{
+  "name": "com.poetools.audio",
+  "version": "0.0.1",
+  "displayName": "Poetools Audio",
+  "description": "An abstraction layer for playing audio in Unity, to make transitioning from built-in to FMOD easier.",
+  "author": {
+    "name": "poetahto",
+    "email": "epic.potat@gmail.com"
+  }
+}

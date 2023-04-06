@@ -1,0 +1,10 @@
+{
+  "name": "com.poetools.assets3d",
+  "version": "0.0.1",
+  "displayName": "Poetools Assets 3D",
+  "description": "Useful assets for getting started in 3D projects.",
+  "author": {
+    "name": "poetahto",
+    "email": "epic.potat@gmail.com"
+  }
+}

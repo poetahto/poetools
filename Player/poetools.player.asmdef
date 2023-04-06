@@ -1,0 +1,17 @@
+{
+    "name": "poetools.player",
+    "rootNamespace": "poetools.player",
+    "references": [
+        "GUID:48165e4932c2d0c4c9f9eba53d9f9863",
+        "GUID:324caed91501a9c47a04ebfd87b68794"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

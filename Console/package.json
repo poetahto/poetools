@@ -1,0 +1,10 @@
+{
+  "name": "com.poetools.console",
+  "version": "0.0.1",
+  "displayName": "Poetools Console",
+  "description": "A runtime console implementation for the Unity game engine.",
+  "author": {
+    "name": "poetahto",
+    "email": "epic.potat@gmail.com"
+  }
+}

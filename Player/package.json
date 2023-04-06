@@ -1,0 +1,10 @@
+{
+  "name": "com.poetools.player",
+  "version": "0.0.1",
+  "displayName": "Poetools Player",
+  "description": "Scripts used for creating a flexible player-controlled character.",
+  "author": {
+    "name": "poetahto",
+    "email": "epic.potat@gmail.com"
+  }
+}

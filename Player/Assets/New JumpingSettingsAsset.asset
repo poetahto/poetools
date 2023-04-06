@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad80958d649a4b19a0b978918d3c1b84, type: 3}
+  m_Name: New JumpingSettingsAsset
+  m_EditorClassIdentifier: 
+  settings:
+    holdAndJump: 0
+    scrollToJump: 0
+    jumpDistance: 4
+    jumpHeight: 0.7
+    assumedInitialSpeed: 5
+    standardSkew: 0.5
+    enableFastFall: 0
+    minDistance: 2.5
+    minHeight: 0.55
+    fastFallSkew: 0.5
+    airJumps: 0
+    coyoteTime: 0.15
+    jumpBufferTime: 0.15
