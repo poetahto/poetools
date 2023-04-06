@@ -1,0 +1,10 @@
+{
+  "name": "com.poetools.core",
+  "version": "0.0.1",
+  "displayName": "Poetools Core",
+  "description": "Set of common tools for creating games in the Unity game engine.",
+  "author": {
+    "name": "poetahto",
+    "email": "epic.potat@gmail.com"
+  }
+}
