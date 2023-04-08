@@ -72,7 +72,7 @@ namespace poetools.player.Player.Crouching
                 CrouchingCollider = crouchingCollider,
             };
 
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
 
         private bool HasMissingReferences => crouchTransform == null || steadyBase == null || groundCheck == null || crouchingCollider == null || settingsAsset == null;
 

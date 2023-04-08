@@ -85,7 +85,7 @@ namespace poetools.player.Player.Jumping
             }
         }
 
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
 
         private bool HasMissingReferences => physicsComponent == null || groundCheck == null || gravity == null || settingsAsset == null;
 

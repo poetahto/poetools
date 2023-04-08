@@ -12,27 +12,29 @@ namespace poetools.Core
     public class Trigger : MonoBehaviour
     {
         [Header("Settings")]
-    
+
         [SerializeField]
         [Tooltip("Which layers should be ignored when checking collisions.")]
-        private LayerMask excludeLayers;
+        public LayerMask excludeLayers;
+
+        public List<GameObject> excludeObjects = new List<GameObject>();
 
         [SerializeField]
         [Tooltip("Should this trigger disable itself after one activation?")]
         private bool oneShot;
 
         [Space(20f)]
-    
-        [SerializeField] 
+
+        [SerializeField]
         [Tooltip("Called when a collider enters this trigger.")]
         private UnityEvent<Collider> collisionEnter = new UnityEvent<Collider>();
-    
-        [SerializeField] 
+
+        [SerializeField]
         [Tooltip("Called when a collider exits this trigger.")]
         private UnityEvent<Collider> collisionExit = new UnityEvent<Collider>();
 
         // Internal State
-    
+
         public IReadOnlyCollection<Rigidbody> Rigidbodies => _rigidbodies;
         public IReadOnlyCollection<Collider> Colliders => _colliders;
 
@@ -40,7 +42,7 @@ namespace poetools.Core
         private HashSet<Collider> _colliders = new HashSet<Collider>();
 
         public Collider Collider => _collider;
-    
+
         // Methods
 
         private Collider _collider;
@@ -56,17 +58,17 @@ namespace poetools.Core
             // Ensure that the collider is always set to be a trigger.
             GetComponent<Collider>().isTrigger = true;
         }
-    
+
         // Note: enter / exit can sometime miss objects, so we cannot rely on it for updating our lists.
-        // However, its convenient for sending UnityEvents to the editor. 
-    
+        // However, its convenient for sending UnityEvents to the editor.
+
         private void OnTriggerEnter(Collider other)
         {
             if (IsValidCollider(other) && enabled)
             {
                 if (showDebug)
                     Debug.Log($"Entered trigger: {other.gameObject.name}", gameObject);
-                
+
                 collisionEnter?.Invoke(other);
             }
         }
@@ -77,7 +79,7 @@ namespace poetools.Core
             {
                 if (showDebug)
                     Debug.Log($"Exited trigger: {other.gameObject.name}", gameObject);
-                
+
                 collisionExit.Invoke(other);
 
                 if (oneShot)
@@ -88,43 +90,44 @@ namespace poetools.Core
         private void FixedUpdate()
         {
             // Every physics update, we clear our state and repopulate with new data from OnTriggerStay.
-        
+
             _rigidbodies.Clear();
             _colliders.Clear();
         }
-    
+
         private void OnTriggerStay(Collider other)
         {
             if (IsValidCollider(other) && enabled)
             {
                 _colliders.Add(other);
-            
+
                 if (other.attachedRigidbody != null)
                     _rigidbodies.Add(other.attachedRigidbody);
             }
         }
-    
+
         private bool IsValidCollider(Collider other)
         {
             // weird bit-mask code for checking if the object is a valid layer
             bool isExcludeLayer = excludeLayers.value == (excludeLayers.value | (1 << other.gameObject.layer));
             bool isTrigger = other.isTrigger;
-        
-            return !isTrigger && !isExcludeLayer;
+            bool isExcludeObject = excludeObjects.Contains(other.gameObject);
+
+            return !isTrigger && !isExcludeLayer && !isExcludeObject;
         }
 
         #region Debug
 
-        [SerializeField] 
+        [SerializeField]
         [Tooltip("Writes debug information to the screen.")]
         public bool showDebug;
-    
+
         private void OnGUI()
         {
             if (showDebug)
             {
                 GUILayout.Label($"Rigidbodies: {Rigidbodies.Count}");
-                
+
                 foreach (var occupiedRigidbody in Rigidbodies)
                     GUILayout.Label(occupiedRigidbody.name);
 
@@ -136,6 +139,6 @@ namespace poetools.Core
         }
 
         #endregion
-    
+
     }
 }

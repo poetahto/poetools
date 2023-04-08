@@ -71,7 +71,7 @@ namespace poetools.player.Player.Rotation
             }
         }
 
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
 
         // Checks to see if the user has remembered to assign transforms in the inspector.
         private bool HasNoTargets => pitchTransforms.Count <= 0 && yawTransforms.Count <= 0;

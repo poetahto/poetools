@@ -84,7 +84,7 @@ namespace poetools.player.Player.Interaction
             }
         }
 
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
 
         private bool HasMissingReferences => viewDirection == null || settingsAsset == null;
 

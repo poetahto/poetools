@@ -37,10 +37,18 @@ namespace poetools.player.Player.Rotation
             _currentPitch = Mathf.Clamp(euler.x, -90, 90);
 
             foreach (var pitchTransform in PitchTargets)
-                pitchTransform.localRotation = Quaternion.Euler(_currentPitch, 0, 0);
+            {
+                var current = pitchTransform.localRotation.eulerAngles;
+                current.x = _currentPitch;
+                pitchTransform.localRotation = Quaternion.Euler(current);
+            }
 
             foreach (var yawTransform in YawTargets)
-                yawTransform.localRotation = Quaternion.Euler(0, _currentYaw, 0);
+            {
+                var current = yawTransform.localRotation.eulerAngles;
+                current.y = _currentYaw;
+                yawTransform.localRotation = Quaternion.Euler(current);
+            }
         }
 
         public Vector3 GetRotation()

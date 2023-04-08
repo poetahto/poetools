@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5818275606387419813, guid: 785018c54acb95c418e56640f59779bf, type: 3}
@@ -59,14 +60,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Custom Network Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5474245986760851793, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5818275606387419862, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 143}
   m_SourcePrefab: {fileID: 100100000, guid: 785018c54acb95c418e56640f59779bf, type: 3}
 --- !u!1 &787305522668665901 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5818275606387419862, guid: 785018c54acb95c418e56640f59779bf, type: 3}
   m_PrefabInstance: {fileID: 6508749184400922363}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-2010423002310265139
+--- !u!114 &143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

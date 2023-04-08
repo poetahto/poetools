@@ -61,7 +61,7 @@ namespace poetools.player.Player.Movement
                 YawTransform = yawTransform,
             };
 
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
 
         private void Update()
         {

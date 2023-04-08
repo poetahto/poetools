@@ -39,7 +39,7 @@ namespace poetools.player.Player.Crouching
             RawCameraTransform.position = SmoothedCrouchPosition;
 
             // Creating the head-room tracker.
-            var headRoomObj = new GameObject("Head Room", typeof(BoxCollider), typeof(Trigger));
+            var headRoomObj = new GameObject("Head Room", typeof(BoxCollider), typeof(Trigger), typeof(Rigidbody));
             headRoomObj.transform.SetParent(Parent);
             headRoomObj.layer = LayerMask.NameToLayer("Ignore Raycast");
             headRoomObj.transform.position = Parent.position;
@@ -47,6 +47,10 @@ namespace poetools.player.Player.Crouching
             var headRoomCollider = headRoomObj.GetComponent<BoxCollider>();
             headRoomCollider.size = new Vector3(0.9f, (settings.standingHeight - settings.crouchHeight) * 1.1f, 0.9f);
             headRoomCollider.center = Vector3.down * ((settings.standingHeight - settings.crouchHeight) * 1.1f / 2);
+            var rigidbody = headRoomObj.GetComponent<Rigidbody>();
+            rigidbody.isKinematic = true;
+            var trigger = headRoomObj.GetComponent<Trigger>();
+            trigger.excludeObjects.Add(parent.gameObject);
 
             // Initializing the states.
             Standing = new StandingState(this);
