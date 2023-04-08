@@ -63,7 +63,6 @@ namespace poetools.Multiplayer
             // This would probably be where you make sure the message is appropriate / safe.
             payload.ReadValueSafe(out FixedString message);
             ServerBroadcast(message);
-            payload.Dispose();
         }
 
         // Called on a server to send a message to clients.
@@ -85,7 +84,6 @@ namespace poetools.Multiplayer
 
             payload.ReadValueSafe(out FixedString message);
             MessageReceived?.Invoke(message.ToString());
-            payload.Dispose();
         }
     }
 }

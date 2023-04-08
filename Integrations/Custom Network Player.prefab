@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3800045254753155709, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+      propertyPath: interacted.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5818275606387419813, guid: 785018c54acb95c418e56640f59779bf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -60,6 +64,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Custom Network Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7221408193413814557, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+      propertyPath: clientInteracted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221408193413814557, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+      propertyPath: clientInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221408193413814557, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+      propertyPath: clientInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5607175197137621420}
+    - target: {fileID: 7221408193413814557, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+      propertyPath: clientInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221408193413814557, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+      propertyPath: clientInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Interacted
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221408193413814557, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+      propertyPath: clientInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: poetools.player.Player.Interaction.InteractableCrosshairIndicator, poetools.player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221408193413814557, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+      propertyPath: clientInteracted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5474245986760851793, guid: 785018c54acb95c418e56640f59779bf, type: 3}
     m_RemovedGameObjects: []
@@ -84,5 +116,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c5e811f1be64369a625e49a8a56b646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5607175197137621420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1694207538944296791, guid: 785018c54acb95c418e56640f59779bf, type: 3}
+  m_PrefabInstance: {fileID: 6508749184400922363}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787305522668665901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5cf7c4f61643f288e702516c2c4ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
