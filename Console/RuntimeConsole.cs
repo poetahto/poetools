@@ -74,7 +74,6 @@ namespace poetools.Console
         {
             CommandRegistry.Dispose();
             OnCreate = null;
-            print("cleaned");
         }
 
         #region Event Handling
