@@ -5,7 +5,7 @@ using poetools.Core;
 using poetools.Multiplayer;
 using UnityEngine;
 
-namespace Multiplayer
+namespace Integrations
 {
     [CreateAssetMenu(menuName = IntegrationNaming.AssetMenuName + "/Commands/Relay")]
     public class RelayCommand : Command

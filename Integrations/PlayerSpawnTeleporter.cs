@@ -1,7 +1,7 @@
 ﻿using Unity.Netcode;
 using UnityEngine;
 
-namespace Examples
+namespace Integrations
 {
     public class PlayerSpawnTeleporter : NetworkBehaviour
     {

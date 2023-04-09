@@ -2,7 +2,7 @@
 using poetools.Multiplayer;
 using UnityEngine;
 
-namespace Examples
+namespace Integrations
 {
     /// <summary>
     /// Simple binding between the multiplayer chat system and the runtime console.

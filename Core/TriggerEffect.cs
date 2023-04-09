@@ -1,7 +1,7 @@
-﻿namespace Application.Core
-{
-    using UnityEngine;
+﻿using UnityEngine;
 
+namespace poetools.Core
+{
     /// <summary>
     /// Provides easy logic for performing behaviors when an object enters a trigger.
     /// </summary>

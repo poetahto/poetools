@@ -1,5 +1,4 @@
-﻿using Application.Core;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace poetools.Core.SafeCollision
 {

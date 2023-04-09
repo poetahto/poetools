@@ -4,7 +4,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Examples
+namespace Integrations
 {
     public class ServerAuthoritativeInteraction : NetworkBehaviour, IInputProvider
     {

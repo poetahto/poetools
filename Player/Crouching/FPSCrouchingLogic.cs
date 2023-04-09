@@ -1,5 +1,4 @@
-﻿using Application.Core;
-using poetools.Core;
+﻿using poetools.Core;
 using poetools.player.Player.Crouching.Colliders;
 using poetools.player.Player.Crouching.States;
 using UnityEngine;

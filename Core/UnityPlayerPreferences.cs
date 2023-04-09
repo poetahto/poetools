@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace poetools.Console.Commands
+namespace poetools.Core
 {
     public class UnityPlayerPreferences : Preferences
     {

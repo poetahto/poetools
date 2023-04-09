@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Examples
+namespace Integrations
 {
     public class PlayerSpawnPosition : MonoBehaviour
     {

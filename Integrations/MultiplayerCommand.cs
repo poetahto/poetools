@@ -6,7 +6,7 @@ using poetools.Multiplayer;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace Multiplayer
+namespace Integrations
 {
     [CreateAssetMenu(menuName = IntegrationNaming.AssetMenuName + "/Commands/Multiplayer")]
     public class MultiplayerCommand : Command

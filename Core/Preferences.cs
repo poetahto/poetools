@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace poetools.Console.Commands
+namespace poetools.Core
 {
     public struct PreferenceChangeData
     {

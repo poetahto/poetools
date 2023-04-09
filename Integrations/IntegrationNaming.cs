@@ -1,6 +1,6 @@
 ﻿using poetools.Core;
 
-namespace Multiplayer
+namespace Integrations
 {
     internal static class IntegrationNaming
     {

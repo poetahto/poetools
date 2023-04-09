@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using poetools.Console;
-using poetools.Console.Commands;
 using UnityEngine;
 
-namespace Integrations
+namespace poetools.Console.Commands
 {
     [CreateAssetMenu(menuName = RuntimeConsoleNaming.AssetMenuName + "/Commands/Screen")]
     public class ScreenCommand : Command

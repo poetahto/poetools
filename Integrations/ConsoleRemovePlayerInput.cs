@@ -2,7 +2,7 @@
 using poetools.player.Player;
 using UnityEngine;
 
-namespace Examples
+namespace Integrations
 {
     public class ConsoleRemovePlayerInput : MonoBehaviour
     {

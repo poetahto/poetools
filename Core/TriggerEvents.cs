@@ -1,11 +1,11 @@
-﻿namespace Application.Core
-{
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.Events;
-    using UnityEngine.SceneManagement;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
+namespace poetools.Core
+{
     /// <summary>
     /// Handles OnTrigger events, and passes them to C# events.
     /// </summary>

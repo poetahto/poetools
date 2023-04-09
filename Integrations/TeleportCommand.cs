@@ -1,8 +1,9 @@
-﻿using Multiplayer;
+﻿using poetools.Console;
+using poetools.Console.Commands;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace poetools.Console.Commands
+namespace Integrations
 {
     [CreateAssetMenu(menuName = IntegrationNaming.AssetMenuName + "/Commands/Teleport")]
     public class TeleportCommand : Command

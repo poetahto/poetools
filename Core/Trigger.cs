@@ -1,8 +1,8 @@
-﻿namespace Application.Core
-{
-    using System;
-    using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+namespace poetools.Core
+{
     /// <summary>
     /// An object that tracks when other objects enter its collision.
     /// </summary>
