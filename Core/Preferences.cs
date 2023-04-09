@@ -1,7 +1,20 @@
-﻿namespace poetools.Console.Commands
+﻿using System;
+
+namespace poetools.Console.Commands
 {
+    public struct PreferenceChangeData
+    {
+        public string Preference;
+        public string OldValue;
+        public string NewValue;
+    }
+
     public abstract class Preferences
     {
+        public abstract event Action<PreferenceChangeData> ValueChanged;
+        public abstract event Action LoadFinished;
+        public abstract event Action SaveStarted;
+
         public static Preferences Default { get; set; } = new UnityPlayerPreferences();
 
         public abstract void SetValue(string key, string value);
@@ -26,6 +39,16 @@
 
             value = string.Empty;
             return false;
+        }
+
+        protected PreferenceChangeData GenerateChangeData(string key, string newValue)
+        {
+            return new PreferenceChangeData
+            {
+                Preference = key,
+                NewValue = newValue,
+                OldValue = GetValue(key),
+            };
         }
     }
 }

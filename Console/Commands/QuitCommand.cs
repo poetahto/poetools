@@ -6,7 +6,7 @@ namespace poetools.Console.Commands
     public class QuitCommand : Command
     {
         public override string Name => "quit";
-        
+
         public override void Execute(string[] args, RuntimeConsole console)
         {
             console.Log(Name, "Quitting game.");

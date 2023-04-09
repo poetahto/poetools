@@ -145,15 +145,18 @@ namespace poetools.Console
                 return;
             }
 
-            var newSpaceCount = newValue.Count(c => c == ' ');
-            var oldSpaceCount = oldValue.Count(c => c == ' ');
-
-            // If we entered a space, apply the auto-complete.
-            if (_suggestions.Any() && newSpaceCount > oldSpaceCount)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                _autoCompleteIndex = 0;
-                string autoCompleteText = View.AutoCompleteDisplay.GetText();
-                View.InputFieldDisplay.SetText(autoCompleteText + " ");
+                var newSpaceCount = newValue.Count(c => c == ' ');
+                var oldSpaceCount = oldValue.Count(c => c == ' ');
+
+                // If we entered a space, apply the auto-complete.
+                if (_suggestions.Any() && newSpaceCount > oldSpaceCount)
+                {
+                    _autoCompleteIndex = 0;
+                    string autoCompleteText = View.AutoCompleteDisplay.GetText();
+                    View.InputFieldDisplay.SetText(autoCompleteText + " ");
+                }
             }
 
             CommandRegistry.FindCommands(View.InputFieldDisplay.GetText(), _suggestions);
@@ -197,6 +200,7 @@ namespace poetools.Console
         {
             View.InputFieldDisplay.Clear();
             View.InputFieldDisplay.Focus();
+            InputHistory.Clear();
         }
     }
 }
