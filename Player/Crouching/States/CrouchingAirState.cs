@@ -31,7 +31,7 @@ namespace poetools.player.Player.Crouching.States
 
             else if (!Parent.WantsToCrouch)
             {
-                if (Parent.HeadRoom.Colliders.Count == 0)
+                if (Parent.HeadRoom.CurrentColliders.Count == 0)
                 {
                     var amount = Vector3.down * (Parent.Settings.standingHeight - Parent.Settings.crouchHeight);
                     Parent.Parent.transform.position += amount;

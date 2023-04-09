@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Application.Core;
+using UnityEngine;
 
 namespace poetools.Core.SafeCollision
 {
@@ -9,17 +10,17 @@ namespace poetools.Core.SafeCollision
             return GetComponent<T>();
         }
 
-        protected override Trigger AddTrigger(GameObject target)
+        protected override TriggerEvents AddTrigger(GameObject target)
         {
             var originalCollider = GetComponent<T>();
             var targetCollider = target.AddComponent<T>();
             targetCollider.isTrigger = true;
-            
+
             CopyTo(targetCollider, originalCollider);
 
-            return target.AddComponent<Trigger>();
+            return target.AddComponent<TriggerEvents>();
         }
-        
+
         protected abstract void CopyTo(T target, T original);
     }
 }

@@ -1,4 +1,5 @@
-﻿using poetools.Core;
+﻿using Application.Core;
+using poetools.Core;
 using poetools.player.Player.Crouching.Colliders;
 using poetools.player.Player.Crouching.States;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace poetools.player.Player.Crouching
         public readonly CrouchingAirState CrouchingAir;
 
         public readonly Transform RawCameraTransform;
-        public readonly Trigger HeadRoom;
+        public readonly TriggerEvents HeadRoom;
         public readonly CrouchingSettings Settings;
         public readonly Transform Parent;
 
@@ -39,18 +40,19 @@ namespace poetools.player.Player.Crouching
             RawCameraTransform.position = SmoothedCrouchPosition;
 
             // Creating the head-room tracker.
-            var headRoomObj = new GameObject("Head Room", typeof(BoxCollider), typeof(Trigger), typeof(Rigidbody));
+            var headRoomObj = new GameObject("Head Room", typeof(BoxCollider), typeof(TriggerEvents), typeof(Rigidbody));
             headRoomObj.transform.SetParent(Parent);
             headRoomObj.layer = LayerMask.NameToLayer("Ignore Raycast");
             headRoomObj.transform.position = Parent.position;
-            HeadRoom = headRoomObj.GetComponent<Trigger>();
+            HeadRoom = headRoomObj.GetComponent<TriggerEvents>();
             var headRoomCollider = headRoomObj.GetComponent<BoxCollider>();
+            headRoomCollider.isTrigger = true;
             headRoomCollider.size = new Vector3(0.9f, (settings.standingHeight - settings.crouchHeight) * 1.1f, 0.9f);
             headRoomCollider.center = Vector3.down * ((settings.standingHeight - settings.crouchHeight) * 1.1f / 2);
             var rigidbody = headRoomObj.GetComponent<Rigidbody>();
             rigidbody.isKinematic = true;
-            var trigger = headRoomObj.GetComponent<Trigger>();
-            trigger.excludeObjects.Add(parent.gameObject);
+            var trigger = headRoomObj.GetComponent<TriggerEvents>();
+            trigger.excludeColliders.AddRange(parent.GetComponents<Collider>());
 
             // Initializing the states.
             Standing = new StandingState(this);
