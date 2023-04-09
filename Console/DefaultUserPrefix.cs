@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace poetools.Console
 {
-    [CreateAssetMenu]
+[CreateAssetMenu(menuName = RuntimeConsoleNaming.AssetMenuName + "/Default User Prefix")]
     public class DefaultUserPrefix : UserPrefix
     {
         [SerializeField]

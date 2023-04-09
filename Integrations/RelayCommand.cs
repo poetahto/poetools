@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Multiplayer
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = IntegrationNaming.AssetMenuName + "/Commands/Relay")]
     public class RelayCommand : Command
     {
         private const int MaxPlayers = 2;

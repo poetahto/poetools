@@ -2,7 +2,7 @@
 
 namespace poetools.player.Player.WIP
 {
-    [CreateAssetMenu]
+    // [CreateAssetMenu]
     public class MovementSettings : ScriptableObject
     {
         public float speed;

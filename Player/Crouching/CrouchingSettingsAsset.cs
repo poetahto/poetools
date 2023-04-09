@@ -5,7 +5,7 @@ using UnityEngine;
 namespace poetools.player.Player.Crouching
 {
     [HideMonoScript]
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = PlayerNaming.AssetMenuName + "/Crouching Settings")]
     public class CrouchingSettingsAsset : ScriptableObject
     {
         [HideLabel]

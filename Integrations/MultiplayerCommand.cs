@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Multiplayer
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = IntegrationNaming.AssetMenuName + "/Commands/Multiplayer")]
     public class MultiplayerCommand : Command
     {
         private RuntimeConsole _console;

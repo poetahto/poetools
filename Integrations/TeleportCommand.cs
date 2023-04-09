@@ -1,9 +1,10 @@
-﻿using Unity.Netcode;
+﻿using Multiplayer;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace poetools.Console.Commands
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = IntegrationNaming.AssetMenuName + "/Commands/Teleport")]
     public class TeleportCommand : Command
     {
         public override string Name => "teleport";

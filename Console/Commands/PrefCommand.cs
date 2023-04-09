@@ -2,7 +2,7 @@
 
 namespace poetools.Console.Commands
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = RuntimeConsoleNaming.AssetMenuName + "/Commands/Pref")]
     public class PrefCommand : Command
     {
         public override string Name => "pref";

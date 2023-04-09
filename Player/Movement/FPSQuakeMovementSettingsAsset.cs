@@ -5,7 +5,7 @@ using UnityEngine;
 namespace poetools.player.Player.Movement
 {
     [HideMonoScript]
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = PlayerNaming.AssetMenuName + "/Quake Movement Settings")]
     public class FPSQuakeMovementSettingsAsset : ScriptableObject
     {
         [HideLabel]

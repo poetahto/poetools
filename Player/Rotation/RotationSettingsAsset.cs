@@ -5,7 +5,7 @@ using UnityEngine;
 namespace poetools.player.Player.Rotation
 {
     [HideMonoScript]
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = PlayerNaming.AssetMenuName + "/Rotation Settings")]
     public class RotationSettingsAsset : ScriptableObject
     {
         [HideLabel]

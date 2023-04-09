@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace poetools.Console.Commands
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = RuntimeConsoleNaming.AssetMenuName + "/Commands/Help")]
     public class HelpCommand : Command
     {
         [SerializeField] private Color helpColor = Color.yellow;

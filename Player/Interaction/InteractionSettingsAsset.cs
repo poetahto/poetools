@@ -5,7 +5,7 @@ using UnityEngine;
 namespace poetools.player.Player.Interaction
 {
     [HideMonoScript]
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = PlayerNaming.AssetMenuName + "/Interaction Settings")]
     public class InteractionSettingsAsset : ScriptableObject
     {
         [HideLabel]

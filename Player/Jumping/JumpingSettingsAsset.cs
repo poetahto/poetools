@@ -5,7 +5,7 @@ using UnityEngine;
 namespace poetools.player.Player.Jumping
 {
     [HideMonoScript]
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = PlayerNaming.AssetMenuName + "/Jumping Settings")]
     public class JumpingSettingsAsset : ScriptableObject
     {
         [HideLabel]
