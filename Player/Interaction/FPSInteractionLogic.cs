@@ -79,10 +79,14 @@ namespace poetools.player.Player.Interaction
                 Interacted?.Invoke(new InteractionData{Sender = sender, Interactable = TargetObject});
 
                 foreach (var interactable in _interactables)
-                {
-                    interactable.HandleInteract(sender);
-                }
+                    interactable.HandleInteractStart(sender);
             }
+        }
+
+        public void StopInteracting(GameObject sender)
+        {
+            foreach (var interactable in _interactables)
+                interactable.HandleInteractStop(sender);
         }
     }
 }

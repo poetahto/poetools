@@ -90,13 +90,43 @@ namespace poetools.player.Player.Interaction
 
         public bool PollWantsToInteract()
         {
+            // foreach (var keyCode in interactionKeys)
+            // {
+            //     if (Input.GetKeyDown(keyCode))
+            //         return true;
+            // }
+            //
+            // return false;
+            //
+
+            bool released = false;
+
             foreach (var keyCode in interactionKeys)
             {
                 if (Input.GetKeyDown(keyCode))
-                    return true;
+                    released = true;
+
+                else if (Input.GetKey(keyCode))
+                    return false;
             }
 
-            return false;
+            return released;
+        }
+
+        public bool PollWantsToStopInteracting()
+        {
+            bool released = false;
+
+            foreach (var keyCode in interactionKeys)
+            {
+                if (Input.GetKey(keyCode))
+                    return false;
+
+                if (Input.GetKeyUp(keyCode))
+                    released = true;
+            }
+
+            return released;
         }
 
         [Button]
@@ -135,6 +165,9 @@ namespace poetools.player.Player.Interaction
             {
                 if (PollWantsToInteract())
                     InteractionLogic.Interact(gameObject);
+
+                else if (PollWantsToStopInteracting())
+                    InteractionLogic.StopInteracting(gameObject);
 
                 InteractionLogic.ViewRay = new Ray(viewDirection.position, viewDirection.forward);
             }

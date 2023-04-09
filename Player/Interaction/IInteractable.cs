@@ -4,6 +4,7 @@ namespace poetools.player.Player.Interaction
 {
     public interface IInteractable
     {
-        void HandleInteract(GameObject grabber);
+        void HandleInteractStart(GameObject grabber);
+        void HandleInteractStop(GameObject grabber);
     }
 }

@@ -20,9 +20,13 @@ namespace Examples
         {
             var viewRay = new Ray(container.viewDirection.position, container.viewDirection.forward);
 
-            if (IsLocalPlayer && Active && container.PollWantsToInteract())
+            if (IsLocalPlayer && Active)
             {
-                InteractServerRpc(viewRay);
+                if (container.PollWantsToInteract())
+                    InteractServerRpc(viewRay);
+
+                if (container.PollWantsToStopInteracting())
+                    StopInteractingServerRpc();
             }
 
             container.InteractionLogic.ViewRay = viewRay;
@@ -36,6 +40,12 @@ namespace Examples
 
             if (container.InteractionLogic.HasFacingObject)
                 RunInteractEventClientRpc();
+        }
+
+        [ServerRpc]
+        private void StopInteractingServerRpc()
+        {
+            container.InteractionLogic.StopInteracting(gameObject);
         }
 
         [ClientRpc]
