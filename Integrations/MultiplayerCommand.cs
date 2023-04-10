@@ -27,7 +27,8 @@ namespace Integrations
 
         public override IEnumerable<string> AutoCompletions => new[]
         {
-            "multiplayer host", "multiplayer connect", "multiplayer server", "multiplayer stop", "multiplayer info", "multiplayer load", "multiplayer chat",
+            "multiplayer host", "multiplayer connect", "multiplayer server", "multiplayer stop",
+            "multiplayer info", "multiplayer load", "multiplayer reload", "multiplayer chat",
         };
 
         public override async void Execute(string[] args, RuntimeConsole console)
@@ -61,6 +62,10 @@ namespace Integrations
                     case "load" when args.Length >= 2:
                         await _controller.SceneLoader.Load(args[1]);
                         console.Log("multiplayer", "Finished loading.");
+                        break;
+                    case "reload":
+                        await _controller.SceneLoader.Reload();
+                        console.Log("multiplayer", "Finished reloading.");
                         break;
                     case "chat" when args.Length >= 2:
                         _controller.ChatSystem.SendMessage(ArgumentTools.Combine(args, 1));

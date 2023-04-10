@@ -14,7 +14,6 @@ namespace poetools.Multiplayer
         [SerializeField]
         private ColorFadeContainer container;
 
-        [SerializeField]
         private NetworkManager networkManager;
 
         /// <summary>
@@ -37,11 +36,17 @@ namespace poetools.Multiplayer
             networkManager.Shutdown();
         }
 
+        protected override void Awake()
+        {
+            base.Awake();
+            networkManager = FindAnyObjectByType<NetworkManager>();
+        }
+
         private void Start()
         {
             // Startup managers are unique in that they don't need the server to be started.
             // This is kind of obvious, but important to initialize right away.
-            var transport = GetComponent<UnityTransport>();
+            var transport = FindAnyObjectByType<UnityTransport>();
             RelayStartup = new RelayStartup(transport, networkManager);
             DirectStartup = new DirectConnectionStartup(transport, networkManager);
         }
