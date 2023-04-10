@@ -54,7 +54,7 @@ namespace poetools.player.Player.Movement
         private FPSQuakeMovementLogic _quakeMovementLogic;
 
         public FPSQuakeMovementLogic QuakeMovementLogic =>
-            _quakeMovementLogic ??= new FPSQuakeMovementLogic(settingsAsset.settings)
+            _quakeMovementLogic ??= new FPSQuakeMovementLogic(settingsAsset.Generate())
             {
                 GroundCheck = groundCheck,
                 PhysicsComponent = physicsComponent,

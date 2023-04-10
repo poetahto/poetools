@@ -11,7 +11,22 @@ namespace poetools.player.Player.Jumping
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        public JumpingSettings settings;
+        private JumpingSettings settings;
+
+        public JumpingSettings Generate() => new JumpingSettings
+        {
+            airJumps = settings.airJumps,
+            coyoteTime = settings.coyoteTime,
+            jumpDistance = settings.jumpDistance,
+            jumpHeight = settings.jumpHeight,
+            minDistance = settings.minDistance,
+            minHeight = settings.minHeight,
+            standardSkew = settings.standardSkew,
+            assumedInitialSpeed = settings.assumedInitialSpeed,
+            enableFastFall = settings.enableFastFall,
+            fastFallSkew = settings.fastFallSkew,
+            jumpBufferTime = settings.jumpBufferTime,
+        };
     }
 
     // todo: more decoration and cleanup of these settings

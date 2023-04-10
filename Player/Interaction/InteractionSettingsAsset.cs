@@ -11,7 +11,12 @@ namespace poetools.player.Player.Interaction
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        public InteractionSettings settings;
+        private InteractionSettings settings;
+
+        public InteractionSettings Generate() => new InteractionSettings
+        {
+            range = settings.range,
+        };
     }
 
     [Serializable]

@@ -74,7 +74,7 @@ namespace poetools.player.Player.Jumping
             get
             {
                 // Lazy initialization, also to simply order-of-initialization for users.
-                _jumpingLogic ??= new FPSJumpingLogic(settingsAsset.settings)
+                _jumpingLogic ??= new FPSJumpingLogic(settingsAsset.Generate())
                 {
                     Physics = physicsComponent,
                     Gravity = gravity,

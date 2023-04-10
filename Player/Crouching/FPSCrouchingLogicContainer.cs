@@ -64,7 +64,7 @@ namespace poetools.player.Player.Crouching
         /// </summary>
         public FPSCrouchingLogic CrouchingLogic =>
             // Lazy initialization, also to simply order-of-initialization for users.
-            _crouchingLogic ??= new FPSCrouchingLogic(settingsAsset.settings, transform)
+            _crouchingLogic ??= new FPSCrouchingLogic(settingsAsset.Generate(), transform)
             {
                 SmoothedCrouchTransform = crouchTransform,
                 SteadyBase = steadyBase,

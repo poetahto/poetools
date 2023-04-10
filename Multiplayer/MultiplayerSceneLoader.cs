@@ -28,6 +28,12 @@ namespace poetools.Multiplayer
             _netManager.CustomMessagingManager.RegisterNamedMessageHandler(ClientFinishedFadingMessage, HandleClientFinishedFading);
         }
 
+        public async Task Reload()
+        {
+            var currentScene = SceneManager.GetActiveScene().name;
+            await Load(currentScene);
+        }
+
         public async Task Load(string sceneName)
         {
             if (_netManager.IsServer)

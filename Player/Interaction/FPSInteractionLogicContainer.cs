@@ -74,7 +74,7 @@ namespace poetools.player.Player.Interaction
                 // Lazy initialization, also to simply order-of-initialization for users.
                 if (_interactionLogic == null)
                 {
-                    _interactionLogic = new FPSInteractionLogic(settingsAsset.settings);
+                    _interactionLogic = new FPSInteractionLogic(settingsAsset.Generate());
                     _interactionLogic.Interacted += interacted.Invoke;
                     _interactionLogic.FaceObjectStarted += faceObjectStarted.Invoke;
                     _interactionLogic.FaceObjectEnded += faceObjectEnded.Invoke;

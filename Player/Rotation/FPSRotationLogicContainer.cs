@@ -62,7 +62,7 @@ namespace poetools.player.Player.Rotation
                 // Lazy initialization, also to simply order-of-initialization for users.
                 if (_rotationLogic == null)
                 {
-                    _rotationLogic = new FPSRotationLogic(settingsAsset.settings);
+                    _rotationLogic = new FPSRotationLogic(settingsAsset.Generate());
                     _rotationLogic.PitchTargets.AddRange(pitchTransforms);
                     _rotationLogic.YawTargets.AddRange(yawTransforms);
                 }

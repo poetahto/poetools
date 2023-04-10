@@ -11,7 +11,13 @@ namespace poetools.player.Player.Rotation
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        public RotationSettings settings;
+        private RotationSettings settings;
+
+        public RotationSettings Generate() => new RotationSettings
+        {
+            sensitivity = settings.sensitivity,
+            invertY = settings.invertY,
+        };
     }
 
     [Serializable]

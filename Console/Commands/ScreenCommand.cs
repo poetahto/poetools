@@ -11,7 +11,7 @@ namespace poetools.Console.Commands
         public override IEnumerable<string> AutoCompletions => new[]
         {
             "screen max", "screen exclusive", "screen windowed",
-            "screen resolution", "screen refresh", "screen msaa",
+            "screen resolution", "screen refresh", "screen msaa", "screen fov",
             "screen vsync", "screen vsync true", "screen vsync false",
         };
 
@@ -41,6 +41,9 @@ namespace poetools.Console.Commands
                         break;
                     case "vsync" when args.Length >= 2 && bool.TryParse(args[1], out var vsync):
                         QualitySettings.vSyncCount = vsync ? 1 : 0;
+                        break;
+                    case "fov" when args.Length >= 2 && int.TryParse(args[1], out var fov):
+                        Camera.main.fieldOfView = fov;
                         break;
                 }
             }

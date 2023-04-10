@@ -11,7 +11,15 @@ namespace poetools.player.Player.Crouching
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        public CrouchingSettings settings;
+        private CrouchingSettings settings;
+
+        public CrouchingSettings Generate() => new CrouchingSettings
+        {
+            cameraPercent = settings.cameraPercent,
+            crouchHeight = settings.crouchHeight,
+            crouchingSpeed = settings.crouchingSpeed,
+            standingHeight = settings.standingHeight,
+        };
     }
 
     [Serializable]

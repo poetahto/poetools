@@ -11,7 +11,18 @@ namespace poetools.player.Player.Movement
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        public FPSQuakeMovementSettings settings;
+        private FPSQuakeMovementSettings settings;
+
+        public FPSQuakeMovementSettings Generate() => new FPSQuakeMovementSettings
+        {
+            noFrictionJumpWindow = settings.noFrictionJumpWindow,
+            friction = settings.friction,
+            airAcceleration = settings.airAcceleration,
+            groundAcceleration = settings.groundAcceleration,
+            trueMax = settings.trueMax,
+            maxAirSpeed = settings.maxAirSpeed,
+            maxGroundSpeed = settings.maxGroundSpeed,
+        };
     }
 
     [Serializable]
