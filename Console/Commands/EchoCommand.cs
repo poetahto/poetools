@@ -13,8 +13,8 @@ namespace poetools.Console.Commands
 
             foreach (string arg in args)
                 message += arg + " ";
-        
+
             console.Log(Name, message);
         }
-    }    
+    }
 }

@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace poetools.Console
 {
     public class DictionaryTree
     {
-        private static readonly Dictionary<char, int> CharToIndex = new Dictionary<char, int>();
-        private static readonly Dictionary<int, char> IndexToChar = new Dictionary<int, char>();
+        private static Dictionary<char, int> CharToIndex;
+        private static Dictionary<int, char> IndexToChar;
         private static readonly char[] WordBuffer = new char[100];
 
         private DictionaryTreeNode _rootNode;
 
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            CharToIndex = new Dictionary<char, int>();
+            IndexToChar = new Dictionary<int, char>();
+            GenerateConversionTable();
+        }
+
         public DictionaryTree()
         {
-            if (CharToIndex.Count <= 0)
-                GenerateConversionTable();
-
             _rootNode = DictionaryTreeNode.Create();
         }
 
@@ -43,6 +49,13 @@ namespace poetools.Console
             IndexToChar.Add(27, '_');
             IndexToChar.Add(28, '-');
             IndexToChar.Add(29, '\0');
+
+            // Adds all numbers.
+            for (int i = 48; i <= 57; i++)
+            {
+                CharToIndex.Add((char) i, i - 18);
+                IndexToChar.Add(i - 18, (char) i);
+            }
         }
 
         public void Insert(string word)

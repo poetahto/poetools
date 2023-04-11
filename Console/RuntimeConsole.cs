@@ -20,7 +20,7 @@ namespace poetools.Console
 
     public class RuntimeConsole : PreparedSingleton<RuntimeConsole>
     {
-        public CommandRegistry CommandRegistry { get; } = new CommandRegistry();
+        public CommandRegistry CommandRegistry { get; private set; }
         public RuntimeConsoleView View { get; private set; }
 
         private IInputHistory InputHistory { get; set; }
@@ -52,6 +52,7 @@ namespace poetools.Console
         {
             base.Awake();
 
+            CommandRegistry = new CommandRegistry();
             InputHistory = new InputHistory(_settings.MaxCommandHistory);
 
             // Initialize the view.
