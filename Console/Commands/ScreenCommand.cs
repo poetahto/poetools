@@ -33,11 +33,8 @@ namespace poetools.Console.Commands
                     case "resolution" when args.Length >= 3 && int.TryParse(args[1], out var width) && int.TryParse(args[2], out var height):
                         Screen.SetResolution(width, height, Screen.fullScreenMode);
                         break;
-                    case "refresh" when args.Length >= 2 && uint.TryParse(args[1], out var rate):
-                        Screen.SetResolution(Screen.width, Screen.height, Screen.fullScreenMode, new RefreshRate{numerator = rate, denominator = 0});
-                        break;
-                    case "msaa" when args.Length >= 2 && int.TryParse(args[1], out var msaa):
-                        Screen.SetMSAASamples(msaa);
+                    case "refresh" when args.Length >= 2 && int.TryParse(args[1], out var rate):
+                        Screen.SetResolution(Screen.width, Screen.height, Screen.fullScreenMode, rate);
                         break;
                     case "vsync" when args.Length >= 2 && bool.TryParse(args[1], out var vsync):
                         QualitySettings.vSyncCount = vsync ? 1 : 0;

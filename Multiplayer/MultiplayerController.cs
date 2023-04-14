@@ -39,14 +39,14 @@ namespace poetools.Multiplayer
         protected override void Awake()
         {
             base.Awake();
-            networkManager = FindAnyObjectByType<NetworkManager>();
+            networkManager = FindObjectOfType<NetworkManager>();
         }
 
         private void Start()
         {
             // Startup managers are unique in that they don't need the server to be started.
             // This is kind of obvious, but important to initialize right away.
-            var transport = FindAnyObjectByType<UnityTransport>();
+            var transport = FindObjectOfType<UnityTransport>();
             RelayStartup = new RelayStartup(transport, networkManager);
             DirectStartup = new DirectConnectionStartup(transport, networkManager);
         }
