@@ -51,7 +51,7 @@ namespace poetools.player.Player.Crouching
             var rigidbody = headRoomObj.GetComponent<Rigidbody>();
             rigidbody.isKinematic = true;
             var trigger = headRoomObj.GetComponent<TriggerEvents>();
-            trigger.excludeColliders.AddRange(parent.GetComponents<Collider>());
+            trigger.excludeColliders.AddRange(parent.GetComponentsInChildren<Collider>());
 
             // Initializing the states.
             Standing = new StandingState(this);
