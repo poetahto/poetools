@@ -34,6 +34,7 @@ namespace Application
 #if UNITY_EDITOR
                 Debug.Log($"{"[EDITOR ONLY]".Bold()} Loading Entrypoint...");
                 string originalScene = SceneManager.GetActiveScene().name;
+                await Task.Yield(); // We have to wait one frame here, so the Entrypoint can initialize itself
                 SceneManager.LoadScene("Entrypoint", LoadSceneMode.Single);
                 await Task.Yield(); // We have to wait one frame here, so the Entrypoint can initialize itself
                 Debug.Log($"{"[EDITOR ONLY]".Bold()} Trying to load {originalScene} after Entrypoint...");
