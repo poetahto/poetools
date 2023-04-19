@@ -62,6 +62,8 @@ namespace poetools.player.Player.Interaction
         [SerializeField]
         public UnityEvent faceObjectEnded;
 
+        [SerializeField] private GameObject grabber;
+
         private FPSInteractionLogic _interactionLogic;
 
         /// <summary>
@@ -164,10 +166,10 @@ namespace poetools.player.Player.Interaction
             if (automaticallyProvideInput && Active)
             {
                 if (PollWantsToInteract())
-                    InteractionLogic.Interact(gameObject);
+                    InteractionLogic.Interact(grabber);
 
                 else if (PollWantsToStopInteracting())
-                    InteractionLogic.StopInteracting(gameObject);
+                    InteractionLogic.StopInteracting(grabber);
 
                 InteractionLogic.ViewRay = new Ray(viewDirection.position, viewDirection.forward);
             }

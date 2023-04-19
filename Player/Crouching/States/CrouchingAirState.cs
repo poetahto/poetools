@@ -20,11 +20,6 @@ namespace poetools.player.Player.Crouching.States
             var cur = Parent.SteadyBasePosition;
             cur.y = Mathf.Lerp(cur.y, Parent.RawCameraTransform.position.y - (Parent.Settings.cameraPercent * Parent.Settings.crouchHeight), Parent.Settings.crouchingSpeed * Time.deltaTime);
             Parent.SteadyBasePosition = cur;
-        }
-
-        public override void PhysicsTick()
-        {
-            base.PhysicsTick();
 
             if (Parent.IsGrounded)
                 Parent.TransitionTo(Parent.CrouchingGround);
@@ -33,13 +28,14 @@ namespace poetools.player.Player.Crouching.States
             {
                 if (Parent.HeadRoom.CurrentColliders.Count == 0)
                 {
-                    var amount = Vector3.down * (Parent.Settings.standingHeight - Parent.Settings.crouchHeight);
+                    var amount = -Parent.Parent.up * (Parent.Settings.standingHeight - Parent.Settings.crouchHeight);
                     Parent.Parent.transform.position += amount;
                     Parent.SteadyBasePosition -= amount;
                     Parent.SmoothedCrouchPosition -= amount;
+                    Physics.SyncTransforms();
                     Parent.TransitionTo(Parent.Standing);
                 }
-                else if (Parent.CanStand && Parent.Cast(Vector3.down, float.PositiveInfinity, out RaycastHit info))
+                else if (Parent.CanStand && Parent.Cast(-Parent.Parent.up, float.PositiveInfinity, out RaycastHit info))
                 {
                     var origPosT = Parent.RawCameraTransform.position;
                     var origPosS = Parent.SteadyBasePosition;
@@ -51,10 +47,17 @@ namespace poetools.player.Player.Crouching.States
                     Parent.RawCameraTransform.position = origPosT;
                     Parent.SteadyBasePosition = origPosS;
                     Parent.SmoothedCrouchPosition = origPosC;
+                    Physics.SyncTransforms();
 
                     Parent.TransitionTo(Parent.Standing);
                 }
             }
+        }
+
+        public override void PhysicsTick()
+        {
+            base.PhysicsTick();
+
         }
     }
 }
