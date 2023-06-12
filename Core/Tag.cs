@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace poetools.Core
 {
@@ -26,8 +25,11 @@ namespace poetools.Core
 
         public override int GetHashCode()
         {
-            // ReSharper disable once NonReadonlyMemberInGetHashCode
-            return HashCode.Combine(base.GetHashCode(), id);
+            unchecked
+            {
+                // ReSharper disable NonReadonlyMemberInGetHashCode
+                return (base.GetHashCode() * 397) ^ (id != null ? id.GetHashCode() : 0);
+            }
         }
 
         public static bool operator ==(Tag a, Tag b)
