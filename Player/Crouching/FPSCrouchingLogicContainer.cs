@@ -46,6 +46,8 @@ namespace poetools.player.Player.Crouching
         [Tooltip("The component used for checking if this object is currently grounded.")]
         private CrouchingCollider crouchingCollider;
 
+        [SerializeField] private Transform parent;
+
         [Group("tabs"), Tab("Input")]
         [PropertyTooltip("Should this container automatically supply inputs to the underlying logic.")]
         [SerializeField]
@@ -64,7 +66,7 @@ namespace poetools.player.Player.Crouching
         /// </summary>
         public FPSCrouchingLogic CrouchingLogic =>
             // Lazy initialization, also to simply order-of-initialization for users.
-            _crouchingLogic ??= new FPSCrouchingLogic(settingsAsset.Generate(), transform)
+            _crouchingLogic ??= new FPSCrouchingLogic(settingsAsset.Generate(), parent)
             {
                 SmoothedCrouchTransform = crouchTransform,
                 SteadyBase = steadyBase,

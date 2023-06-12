@@ -15,5 +15,5 @@ MonoBehaviour:
   settings:
     cameraPercent: 0.9
     crouchHeight: 1
-    standingHeight: 2
+    standingHeight: 1.75
     crouchingSpeed: 10

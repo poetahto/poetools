@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: New FPSQuakeMovementSettingsAsset
   m_EditorClassIdentifier: 
   settings:
-    noFrictionJumpWindow: 0.05
+    noFrictionJumpWindow: 0.1
     friction: 10
     airAcceleration: 40
     groundAcceleration: 50
     maxAirSpeed: 1
-    maxGroundSpeed: 5
+    maxGroundSpeed: 3
     trueMax: 10

@@ -13,7 +13,8 @@ namespace poetools.player.Player.Interaction
     public class FPSInteractionLogic
     {
         private readonly InteractionSettings _settings;
-        private IInteractable[] _interactables;
+        private IInteractable[] _facingInteractables = Array.Empty<IInteractable>();
+        private IInteractable[] _heldInteractables = Array.Empty<IInteractable>();
         private Ray _viewRay;
 
         public FPSInteractionLogic(InteractionSettings settings)
@@ -46,13 +47,13 @@ namespace poetools.player.Player.Interaction
             if (RaycastTools.Raycast3D(ViewRay, out var hit, _settings.range, ~LayerMask.GetMask("Ignore Raycast"),
                     QueryTriggerInteraction.Collide, 0.0f))
             {
-                _interactables = hit.transform.GetComponents<IInteractable>();
+                _facingInteractables = hit.transform.GetComponents<IInteractable>();
 
-                if (!HasFacingObject && _interactables.Length > 0)
+                if (!HasFacingObject && _facingInteractables.Length > 0)
                 {
                     FaceObjectStarted?.Invoke(hit.transform.gameObject);
                 }
-                else if (HasFacingObject && _interactables.Length <= 0)
+                else if (HasFacingObject && _facingInteractables.Length <= 0)
                 {
                     FaceObjectEnded?.Invoke();
                 }
@@ -63,12 +64,17 @@ namespace poetools.player.Player.Interaction
                 }
 
                 TargetObject = hit.transform.gameObject;
-                HasFacingObject = _interactables.Length > 0;
+                HasFacingObject = _facingInteractables.Length > 0;
             }
             else if (HasFacingObject)
             {
                 FaceObjectEnded?.Invoke();
                 HasFacingObject = false;
+                _facingInteractables = Array.Empty<IInteractable>();
+            }
+            else
+            {
+                _facingInteractables = Array.Empty<IInteractable>();
             }
         }
 
@@ -77,16 +83,19 @@ namespace poetools.player.Player.Interaction
             if (HasFacingObject)
             {
                 Interacted?.Invoke(new InteractionData{Sender = sender, Interactable = TargetObject});
+                _heldInteractables = _facingInteractables;
 
-                foreach (var interactable in _interactables)
+                foreach (var interactable in _heldInteractables)
                     interactable.HandleInteractStart(sender);
             }
         }
 
         public void StopInteracting(GameObject sender)
         {
-            foreach (var interactable in _interactables)
+            foreach (var interactable in _heldInteractables)
                 interactable.HandleInteractStop(sender);
+
+            _heldInteractables = Array.Empty<IInteractable>();
         }
     }
 }

@@ -142,7 +142,7 @@ namespace poetools.player.Player.Jumping
         private void ApplyJump()
         {
             Vector3 v = CurrentVelocity;
-            v.y = JumpSpeed;
+            v.y = -_gravity.downDirection.y * JumpSpeed;
             CurrentVelocity = v;
 
             _coyoteAvailable = false;

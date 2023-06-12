@@ -36,7 +36,7 @@ namespace poetools.player.Player.Crouching.States
                 {
                     Parent.TransitionTo(Parent.CrouchingAir);
 
-                    var amount = Vector3.up * (Parent.Settings.standingHeight - Parent.Settings.crouchHeight);
+                    var amount = Parent.Parent.up * (Parent.Settings.standingHeight - Parent.Settings.crouchHeight);
                     Parent.Parent.position += amount;
                     Parent.RawCameraTransform.position -= amount;
                     Parent.SteadyBasePosition -= amount;

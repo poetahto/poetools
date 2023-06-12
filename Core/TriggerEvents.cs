@@ -81,9 +81,6 @@ namespace poetools.Core
         /// <summary>
         /// Gets or sets the layers that should be excluded from triggering this object.
         /// </summary>
-        /// <value>
-        /// The layers that should be excluded from triggering this object.
-        /// </value>
         public LayerMask ExcludeLayers
         {
             get => excludeLayers;

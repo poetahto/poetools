@@ -15,6 +15,9 @@ namespace poetools.Core
         private Vector3 gravityDirection = Vector3.down;
 
         [SerializeField]
+        private Vector3 offset = Vector3.zero;
+
+        [SerializeField]
         [Tooltip("How steep a slope we can climb without slipping.")]
         private float slopeLimitDegrees = 45f;
 
@@ -84,7 +87,7 @@ namespace poetools.Core
 
         private void CheckIsGrounded()
         {
-            int hits = Physics.BoxCastNonAlloc(transform.position, new Vector3(0.25f, Mathf.Abs(groundDistance/2), 0.25f) * 0.99f, -transform.up, _hits, Quaternion.identity,groundDistance/2);
+            int hits = Physics.BoxCastNonAlloc(transform.position + offset, new Vector3(0.25f, Mathf.Abs(groundDistance/2), 0.25f) * 0.99f, -transform.up, _hits, Quaternion.identity,groundDistance/2);
 
             Assert.IsTrue(hits <= MaxHits);
 

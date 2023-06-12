@@ -47,11 +47,12 @@ namespace poetools.player.Player.Crouching
             var headRoomCollider = headRoomObj.GetComponent<BoxCollider>();
             headRoomCollider.isTrigger = true;
             headRoomCollider.size = new Vector3(0.9f, (settings.standingHeight - settings.crouchHeight) * 1.1f, 0.9f);
-            headRoomCollider.center = Vector3.down * ((settings.standingHeight - settings.crouchHeight) * 1.1f / 2);
+            headRoomCollider.center = -parent.up * ((settings.standingHeight - settings.crouchHeight) * 1.1f / 2);
             var rigidbody = headRoomObj.GetComponent<Rigidbody>();
             rigidbody.isKinematic = true;
             var trigger = headRoomObj.GetComponent<TriggerEvents>();
-            trigger.excludeColliders.AddRange(parent.GetComponents<Collider>());
+            trigger.excludeColliders.AddRange(parent.GetComponentsInChildren<Collider>());
+
 
             // Initializing the states.
             Standing = new StandingState(this);
@@ -112,11 +113,11 @@ namespace poetools.player.Player.Crouching
 
         public Vector3 SteadyBasePosition
         {
-            get => _hasSteadyBase ? _steadyBase.position : Vector3.zero;
+            get => _hasSteadyBase ? _steadyBase.localPosition : Vector3.zero;
             set
             {
                 if (_hasSteadyBase)
-                    _steadyBase.position = value;
+                    _steadyBase.localPosition = value;
             }
         }
 
