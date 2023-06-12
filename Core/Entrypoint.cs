@@ -1,13 +1,11 @@
 ﻿using System.Collections;
-using poetools.Core;
+using System.Threading.Tasks;
 using TriInspector;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace Application
+namespace poetools.Core
 {
-    using System.Threading.Tasks;
-    using UnityEngine;
-    using UnityEngine.SceneManagement;
-
     /// <summary>
     /// The part of the entrypoint that ensures it remains loaded.
     /// </summary>

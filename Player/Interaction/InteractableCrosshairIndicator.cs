@@ -6,8 +6,6 @@ namespace poetools.player.Player.Interaction
     public class InteractableCrosshairIndicator : MonoBehaviour
     {
         [SerializeField] private CanvasGroup crosshairCanvasGroup;
-        [SerializeField] private CanvasGroup textCanvasGroup;
-        [SerializeField] private Text targetNameText;
         [SerializeField] private float animationSpeed = 15;
         [SerializeField] private float scaleAmount = 0.5f;
         [SerializeField] private float boostRestoreSpeed = 10;
@@ -28,7 +26,6 @@ namespace poetools.player.Player.Interaction
         private void Update()
         {
             crosshairCanvasGroup.alpha = Mathf.Lerp(crosshairCanvasGroup.alpha, Mathf.Max(0.5f, _targetAlpha), animationSpeed * Time.deltaTime);
-            textCanvasGroup.alpha = Mathf.Lerp(textCanvasGroup.alpha, _targetAlpha, animationSpeed * Time.deltaTime);
             crosshairCanvasGroup.transform.localScale = Vector3.Lerp(crosshairCanvasGroup.transform.localScale, _originalScale * (_targetScale + _interactedBoost), animationSpeed * Time.deltaTime);
             _interactedBoost  = Mathf.Max(0, _interactedBoost - Time.deltaTime * boostRestoreSpeed);
         }
@@ -37,7 +34,6 @@ namespace poetools.player.Player.Interaction
         {
             _targetAlpha = 1;
             _targetScale = 1 + scaleAmount;
-            targetNameText.text = interactable.name;
         }
 
         public void FaceObjectStopped()

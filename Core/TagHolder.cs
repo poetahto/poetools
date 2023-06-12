@@ -1,21 +1,64 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace poetools.Core
 {
     public class TagHolder : MonoBehaviour
     {
-        public List<Tag> tags;
+        public List<Tag> tags = new List<Tag>();
+        [SerializeField] private List<string> quickTags = new List<string>();
+
+        private void Awake()
+        {
+            foreach (string quickTag in quickTags)
+                Add(quickTag);
+        }
+
+        public bool Has(Tag targetTag)
+        {
+            return Has(targetTag.Id);
+        }
+
+        public bool Has(string tagId)
+        {
+            foreach (var currentTag in tags)
+            {
+                if (currentTag.Id == tagId)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool HasAny(params string[] desiredTagIds)
+        {
+            foreach (var tagId in desiredTagIds)
+            {
+                if (Has(tagId))
+                    return true;
+            }
+
+            return false;
+        }
 
         public bool HasAny(params Tag[] desiredTags)
         {
-            foreach (var desiredTag in desiredTags)
+            foreach (var currentTag in desiredTags)
             {
-                foreach (var tag1 in tags)
-                {
-                    if (tag1 == desiredTag)
-                        return true;
-                }
+                if (Has(currentTag))
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool HasAll(params string[] desiredTagIds)
+        {
+            foreach (var tagId in desiredTagIds)
+            {
+                if (Has(tagId))
+                    return true;
             }
 
             return false;
@@ -27,11 +70,8 @@ namespace poetools.Core
 
             foreach (var desiredTag in desiredTags)
             {
-                foreach (var tag1 in tags)
-                {
-                    if (tag1 == desiredTag)
-                        remaining--;
-                }
+                if (Has(desiredTag))
+                    remaining--;
             }
 
             return remaining <= 0;
@@ -39,16 +79,48 @@ namespace poetools.Core
 
         public void Add(params Tag[] desiredTags)
         {
-            tags.AddRange(desiredTags);
+            foreach (var desiredTag in desiredTags)
+            {
+                if (!Has(desiredTag))
+                    tags.Add(desiredTag);
+            }
+        }
+
+        public void Add(params string[] tagIds)
+        {
+            foreach (var tagId in tagIds)
+            {
+                if (!Has(tagId))
+                    tags.Add(Tag.FromString(tagId));
+            }
         }
     }
 
     public static class TagExtensions
     {
-        public static void AddTags(this GameObject target, params Tag[] tags)
+        public static void AddTag(this GameObject target, params Tag[] tags)
         {
             var tagHolder = EnsureHasTagHolder(target);
             tagHolder.Add(tags);
+        }
+
+        public static void AddTag(this GameObject target, params string[] tags)
+        {
+            var tagHolder = EnsureHasTagHolder(target);
+            tagHolder.Add(tags);
+        }
+
+        public static bool HasTag(this GameObject target, Tag tag)
+        {
+            return HasTag(target, tag.Id);
+        }
+
+        public static bool HasTag(this GameObject target, string tag)
+        {
+            if (target.TryGetComponent(out TagHolder tagHolder))
+                return tagHolder.Has(tag);
+
+            return false;
         }
 
         public static bool HasAnyTag(this GameObject target, params Tag[] tags)
@@ -59,7 +131,23 @@ namespace poetools.Core
             return false;
         }
 
+        public static bool HasAnyTag(this GameObject target, params string[] tags)
+        {
+            if (target.TryGetComponent(out TagHolder tagHolder))
+                return tagHolder.HasAny(tags);
+
+            return false;
+        }
+
         public static bool HasAllTags(this GameObject target, params Tag[] tags)
+        {
+            if (target.TryGetComponent(out TagHolder tagHolder))
+                return tagHolder.HasAll(tags);
+
+            return false;
+        }
+
+        public static bool HasAllTags(this GameObject target, params string[] tags)
         {
             if (target.TryGetComponent(out TagHolder tagHolder))
                 return tagHolder.HasAll(tags);

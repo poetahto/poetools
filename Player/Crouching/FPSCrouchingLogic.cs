@@ -17,6 +17,7 @@ namespace poetools.player.Player.Crouching
         public readonly Transform Parent;
 
         private ICrouchingCollider _crouchingCollider;
+        private float _originalHeight;
         private Transform _steadyBase;
         private GroundCheck _groundCheck;
         private Transform _smoothedCrouchTransform;
@@ -53,7 +54,6 @@ namespace poetools.player.Player.Crouching
             var trigger = headRoomObj.GetComponent<TriggerEvents>();
             trigger.excludeColliders.AddRange(parent.GetComponentsInChildren<Collider>());
 
-
             // Initializing the states.
             Standing = new StandingState(this);
             CrouchingGround = new CrouchingGroundState(this);
@@ -67,6 +67,7 @@ namespace poetools.player.Player.Crouching
             set
             {
                 _crouchingCollider = value;
+                _originalHeight = _crouchingCollider.Height;
                 _hasCrouchingCollider = _crouchingCollider != null;
             }
         }
@@ -181,13 +182,15 @@ namespace poetools.player.Player.Crouching
         public void StandUp()
         {
             ColliderHeight = Settings.standingHeight;
-            ColliderCenter = Vector3.zero;
+            // This weird subtraction is because unity height changes are relative to the center, so height affects the center.
+            ColliderCenter = Vector3.zero + (_originalHeight - Settings.standingHeight) * 0.5f * Vector3.down;
         }
 
         public void CrouchDown()
         {
             ColliderHeight = Settings.crouchHeight;
-            ColliderCenter = Vector3.down * ((Settings.standingHeight - Settings.crouchHeight) / 2);
+            // This weird subtraction is because unity height changes are relative to the center, so height affects the center.
+            ColliderCenter = Vector3.down * ((Settings.standingHeight - Settings.crouchHeight) / 2) + (_originalHeight - Settings.standingHeight) * 0.5f * Vector3.down;
         }
     }
 }

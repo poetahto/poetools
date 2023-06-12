@@ -16,12 +16,12 @@ MonoBehaviour:
   logPrefix: {fileID: 11400000, guid: 17cf751f0b682e449971e6f47964edf0, type: 2}
   userPrefix: {fileID: 11400000, guid: f57b872aca0756046b9966d6c2ebfd5e, type: 2}
   maxCommandHistory: 30
-  consoleViewPrefab: {fileID: 3102020810486618539, guid: 13deff28d133b3b4fae5f056ff312f33, type: 3}
+  consoleViewPrefab: {fileID: 3102020810486618539, guid: 13deff28d133b3b4fae5f056ff312f33,
+    type: 3}
   autoRegisterCommands:
   - {fileID: 11400000, guid: 82da640390210f24c8fddaaf9008acdc, type: 2}
   - {fileID: 11400000, guid: c01bddd9581517d4586f81441231e42b, type: 2}
   - {fileID: 11400000, guid: 17c9943a1cfe7af4d8e1e775dc754fdb, type: 2}
   - {fileID: 11400000, guid: e34ec07c43d40304dba698ef9eb821e1, type: 2}
   - {fileID: 11400000, guid: 1fa00225a0b99fb488b218dc51d148bb, type: 2}
-  - {fileID: 11400000, guid: 9a588c89de949a04dafca9a18a27fddb, type: 2}
   - {fileID: 11400000, guid: 4321e91cf8debba43a4eefcb520dc8a0, type: 2}
