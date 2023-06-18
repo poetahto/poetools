@@ -87,9 +87,9 @@ namespace poetools.player.Player.Movement
             _speed = CurrentRunningSpeed;
             _velocity = Velocity;
             var newVel = IsGrounded ? MoveGround() : MoveAir();
-            newVel.y = 0;
-            newVel = Vector3.ClampMagnitude(newVel, _settings.trueMax);
-            newVel.y = Velocity.y;
+            // newVel.y = 0;
+            // newVel = Vector3.ClampMagnitude(newVel, _settings.trueMax);
+            // newVel.y = Velocity.y;
             Velocity = newVel;
         }
 
@@ -97,6 +97,7 @@ namespace poetools.player.Player.Movement
         {
             if (_speed != 0 && GroundedTime > _settings.noFrictionJumpWindow)
             {
+                Debug.Log($"drop: {GroundedTime}");
                 float drop = _speed * _settings.friction * Time.deltaTime;
                 // float originalY = _velocity.y;
                 _velocity *= Mathf.Max(_speed - drop, 0) / _speed;
