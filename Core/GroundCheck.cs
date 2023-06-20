@@ -87,7 +87,7 @@ namespace poetools.Core
 
         private void CheckIsGrounded()
         {
-            int hits = Physics.BoxCastNonAlloc(transform.position + offset, new Vector3(0.25f, Mathf.Abs(groundDistance/2), 0.25f) * 0.99f, -transform.up, _hits, Quaternion.identity,groundDistance/2);
+            int hits = Physics.BoxCastNonAlloc(transform.position + offset, new Vector3(0.5f, Mathf.Abs(groundDistance/2), 0.5f) * 0.99f, -transform.up, _hits, Quaternion.identity,groundDistance/2);
 
             Assert.IsTrue(hits <= MaxHits);
 
