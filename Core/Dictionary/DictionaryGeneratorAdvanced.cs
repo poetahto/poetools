@@ -23,7 +23,7 @@ namespace poetools.Core.Dictionary
         /// <returns>A dictionary filled with inspector-defined values.</returns>
         public Dictionary<TKey, TValue> GenerateDictionary()
         {
-            Dictionary<TKey, TValue> result = new Dictionary<TKey, TValue>();
+            var result = new Dictionary<TKey, TValue>();
 
             foreach (TData keyValuePair in dictionary)
             {

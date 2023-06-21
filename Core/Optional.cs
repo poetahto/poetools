@@ -15,7 +15,16 @@ namespace poetools.Core
             valueEnabled = enabled;
         }
 
-        public bool ShouldBeUsed => valueEnabled;
-        public T Value => value;
+        public bool ShouldBeUsed
+        {
+            get => valueEnabled;
+            set => valueEnabled = value;
+        }
+
+        public T Value
+        {
+            get => value;
+            set => this.value = value;
+        }
     }
 }
