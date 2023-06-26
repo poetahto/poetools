@@ -7,10 +7,10 @@ namespace poetools.Core.Abstraction
     {
         void SetVisible(bool isVisible);
         bool IsVisible();
-        
+
         event Action<bool, bool> OnVisibilityChanged;
     }
-    
+
     public abstract class VisibleComponent : MonoBehaviour, IVisibleComponent
     {
         public abstract void SetVisible(bool isVisible);
