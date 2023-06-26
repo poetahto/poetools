@@ -110,25 +110,8 @@ namespace poetools.Console
             ResetInputField();
         }
 
-        private CursorLockMode _previousLockMode;
-        private bool _previousIsVisible;
-
         private void HandleVisibilityChange(bool wasVisible, bool isVisible)
         {
-            if (isVisible)
-            {
-                _previousLockMode = Cursor.lockState;
-                _previousIsVisible = Cursor.visible;
-
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.lockState = _previousLockMode;
-                Cursor.visible = _previousIsVisible;
-            }
-
             if (isVisible)
                 ResetInputField();
         }

@@ -47,7 +47,7 @@ namespace poetools.player.Player.Crouching
             HeadRoom = headRoomObj.GetComponent<TriggerEvents>();
             var headRoomCollider = headRoomObj.GetComponent<BoxCollider>();
             headRoomCollider.isTrigger = true;
-            headRoomCollider.size = new Vector3(0.4f, (settings.standingHeight - settings.crouchHeight) * 1.1f, 0.4f);
+            headRoomCollider.size = new Vector3(0.5f, (settings.standingHeight - settings.crouchHeight) * 1.1f, 0.5f);
             headRoomCollider.center = -parent.up * ((settings.standingHeight - settings.crouchHeight) * 1.1f / 2);
             var rigidbody = headRoomObj.GetComponent<Rigidbody>();
             rigidbody.isKinematic = true;
